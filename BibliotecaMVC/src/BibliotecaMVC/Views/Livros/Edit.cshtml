@@ -1,0 +1,63 @@
+@model BibliotecaMVC.Models.Livro
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <div class="form-horizontal">
+        <h4>Livro</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="LivroID" />
+        <div class="form-group">
+            <label asp-for="Titulo" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Titulo" class="form-control" />
+                <span asp-validation-for="Titulo" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Quantidade" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Quantidade" class="form-control" />
+                <span asp-validation-for="Quantidade" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Foto" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <img src="~/@Model.Foto"  style="max-height: 180px; max-width: 100px"  /><br />
+                <input type="file" name="files" accept="image/*">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Autores</label>
+            <div class="col-md-10">
+                @foreach (var item in ViewBag.Autores)
+                {
+                    <input type="checkbox"
+                           name="selectedAutores"
+                           value="@item.Value"
+                           @(Html.Raw(item.Checked ? "checked=\"checked\"" : "")) /> @item.Text
+                        <br />
+                }
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

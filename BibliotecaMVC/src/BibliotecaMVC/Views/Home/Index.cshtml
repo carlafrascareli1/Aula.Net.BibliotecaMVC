@@ -1,0 +1,8 @@
+﻿@{
+    ViewData["Title"] = "Página inicial";
+}
+<h1>Livros em destaque</h1>
+<p class="lead">Verifique os livros da nossa Biblioteca abaixo.</p>
+<div>
+    @await Component.InvokeAsync("ListagemLivros", "")
+</div>
