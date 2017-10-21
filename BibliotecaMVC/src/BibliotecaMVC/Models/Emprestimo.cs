@@ -25,8 +25,11 @@ namespace BibliotecaMVC.Models
 
         [DataType(DataType.Date)]
         [Display(Name = "Data de devolução")]
-        public DateTime DataDevolucao { get; set; }
+        public DateTime? DataDevolucao { get; set; }
 
         public ICollection<LivroEmprestimo> LivroEmprestimo { get; set; }
+
+        public string ApplicationUserId { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

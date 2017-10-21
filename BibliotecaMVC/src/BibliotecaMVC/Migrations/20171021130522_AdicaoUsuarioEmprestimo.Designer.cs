@@ -8,9 +8,10 @@ using BibliotecaMVC.Data;
 namespace BibliotecaMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171021130522_AdicaoUsuarioEmprestimo")]
+    partial class AdicaoUsuarioEmprestimo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -86,7 +87,7 @@ namespace BibliotecaMVC.Migrations
 
                     b.Property<string>("ApplicationUserId");
 
-                    b.Property<DateTime?>("DataDevolucao");
+                    b.Property<DateTime>("DataDevolucao");
 
                     b.Property<DateTime>("DataFim");
 

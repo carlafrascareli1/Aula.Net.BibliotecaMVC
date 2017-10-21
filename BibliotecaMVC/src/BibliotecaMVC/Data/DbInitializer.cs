@@ -48,6 +48,16 @@ namespace BibliotecaMVC.Data
                 context.Autor.Add(a);
             }
 
+            var usuarios = new Usuario[]
+            {
+                new Usuario { Nome = "Teste", Email = "teste@teste.com", Senha = "abc123" }
+            };
+
+            foreach (Usuario a in usuarios)
+            {
+                context.Usuario.Add(a);
+            }
+
             context.SaveChanges();
         }
     }

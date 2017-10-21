@@ -29,8 +29,44 @@
             @Html.DisplayFor(model => model.DataInicio)
         </dd>
     </dl>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Imagem</th>
+                <th>Título</th>
+                <th>Autor</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.LivroEmprestimo)
+            {
+                <tr>
+                    <td>
+                        <img class="card-img-top" src="~/@item.Livro.Foto"
+                             width="80px" height="40px">
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Livro.Titulo)
+                    </td>
+                    <td>
+                        @foreach (var livroAutor in item.Livro.LivroAutor)
+                        {
+                            @Html.DisplayFor(modelItem => livroAutor.Autor.Nome)
+                            <br />
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.EmprestimoID">Edit</a> |
+    <br />
+    @if (Model.DataDevolucao == null)
+    {
+        <a asp-action="DevolverLivros" asp-route-id="@Model.EmprestimoID"
+           class="btn btn-danger">Devolução</a>
+    }
     <a asp-action="Index">Back to List</a>
 </div>
